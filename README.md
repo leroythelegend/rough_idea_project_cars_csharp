@@ -20,6 +20,6 @@ Also have done a set of C++ Classes https://github.com/leroythelegend/rough_idea
   // Project Cars UDP uses port number 5606
   UDPBlockingReader reader = new UDPBlockingReader(5606);
   
-  // Call Read, this will block i.e. will not return until there is something to return i.e. read
+  // Call Read, this will block i.e. will not return until there is something to return.
   Byte[] bytes = reader.Read();
 ```
