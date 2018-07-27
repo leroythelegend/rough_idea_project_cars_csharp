@@ -13,6 +13,8 @@ Also have done a set of C++ Classes https://github.com/leroythelegend/rough_idea
 
 ## <a name="C-Reader"></a>Reader
 
+Set of IReader Classes for reading UDP packets.
+
 NOTE: I still need to think on the exception handling.
 
 ### UDPNonBlockingReader
