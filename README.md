@@ -13,10 +13,27 @@ Also have done a set of C++ Classes https://github.com/leroythelegend/rough_idea
 
 ## <a name="C-Reader"></a>Reader
 
+NOTE: I still need to think on the exception handling.
+
+### UDPNonBlockingReader
+
+```
+  // Create a UDPNonBlockingReader object with the port number you want to bind too
+  // This works a bit better, but you have to check you don't have a 0 length Byte array
+  // Project Cars UDP uses port number 5606
+  UDPNonBlockingReader reader = new UDPNonBlockingReader(5606);
+  
+  // Call Read, this will not block but will return a 0 length Byte if 
+  // there was nothing to read.
+  // So need to check the length of the returned Byte array
+  Byte[] bytes = reader.Read();
+  if (bytes.Length > 0) { ...
+```
+
 ### UDPBlockingReader
 
 ```
-  // Create a UDPBlockingReader object with the port number you want to bind to
+  // Create a UDPBlockingReader object with the port number you want to bind too
   // Project Cars UDP uses port number 5606
   UDPBlockingReader reader = new UDPBlockingReader(5606);
   
