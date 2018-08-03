@@ -133,3 +133,36 @@ This is the first part of the specific PCars Packets, here I'm decoding the Pack
                 }
             }
 ```
+### TimingDataDecoder
+```
+            // Create a packetBase object
+            PacketBaseDecoder packetBase = new PacketBaseDecoder();
+            // Use our reader to read the UDP telemetry packets
+            IReader reader = new UDPNonBlockingReader(5606);
+            
+            while (true) {
+                Byte[] bytes = reader.Read();
+                if (bytes.Length > 0)
+                {
+                    int index = 0;
+                    packetBase.Decode(ref bytes, ref index);
+
+                    Console.WriteLine("Packet Type            " + packetBase.packetType.UInt());
+                    // ok so from the packet base we know that 3 is the timingData
+                    if (packetBase.packetType.UInt() == 3) 
+                    {
+                        // Create our timingdata object
+                        TimingsDataDecoder timingData = new TimingsDataDecoder();
+                        // important to reset the index back to 0 for the begining of the packet because 
+                        // we decode the packetbase again to include it in the timingdata object
+                        index = 0;                        
+                        timingData.Decode(ref bytes, ref index);
+                        // take a look at TimingDataDecoder and ParticipantInfoDecoder to see the data you can extract
+                        Console.WriteLine("Current Sector Time" + 
+                                       timingData.participants.data[timingData.localParticipantIndex.UShort()].currentSectorTime.Float());
+                        Console.WriteLine("Current Time " +
+                                       timingData.participants.data[timingData.localParticipantIndex.UShort()].currentTime.Float());
+                    }
+                }                  
+            }
+```
