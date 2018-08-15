@@ -15,12 +15,29 @@ namespace pcars
             ++index;
         }
 
-        public Byte OneByte() {
+        public Byte OneByte() 
+        {
             return data;
         }
 
-        public uint UInt() {
+        public uint UInt() 
+        {
             return data;
+        }
+
+        public int Int()
+        {
+            return data;
+        }
+
+        public CarFlags CarFlags()
+        {
+            return (CarFlags)data;
+        }
+
+        public CrashStates CrashState()
+        {
+            return (CrashStates)data;
         }
     }
 }

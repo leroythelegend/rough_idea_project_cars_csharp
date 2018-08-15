@@ -19,5 +19,10 @@ namespace pcars
         {
             return data;
         }
+
+        public uint UInt()
+        {
+            return (uint)data;
+        }
     }
 }

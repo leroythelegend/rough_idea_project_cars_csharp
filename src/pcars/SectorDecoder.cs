@@ -4,20 +4,20 @@ namespace pcars
     public class SectorDecoder : IDecoder
     {
         private TopTwoBitDecoder zExtraPrecision;
-        private SecondTwoBitDecoder yExtraPrecision;
+        private SecondTwoBitDecoder xExtraPrecision;
         private BottomFourBitDecoder sector;
 
         public SectorDecoder()
         {
             zExtraPrecision = new TopTwoBitDecoder();
-            yExtraPrecision = new SecondTwoBitDecoder();
+            xExtraPrecision = new SecondTwoBitDecoder();
             sector = new BottomFourBitDecoder();
         }
 
         public void Decode(ref Byte[] bytes, ref int index)
         {
             zExtraPrecision.Decode(ref bytes, ref index);
-            yExtraPrecision.Decode(ref bytes, ref index);
+            xExtraPrecision.Decode(ref bytes, ref index);
             sector.Decode(ref bytes, ref index);
             index++;
         }
@@ -27,9 +27,9 @@ namespace pcars
             return zExtraPrecision.Int();
         }
 
-        public int YExtraPrecision()
+        public int XExtraPrecision()
         {
-            return yExtraPrecision.Int();
+            return xExtraPrecision.Int();
         }
 
         public int Sector()

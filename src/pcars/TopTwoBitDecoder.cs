@@ -12,7 +12,7 @@ namespace pcars
 
         public void Decode(ref Byte[] bytes, ref int index)
         {
-            data = (bytes[index] & 192);
+            data = ((bytes[index] & 192) >> 6);
         }
 
         public int Int()

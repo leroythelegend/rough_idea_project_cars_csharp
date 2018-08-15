@@ -3,8 +3,8 @@ namespace pcars
 {
     public class PacketBaseDecoder : CompositeDecoder
     {
-        public UIntDecoder packetNumber;
-        public UIntDecoder categoryPacketNumber;
+        public FourByteDecoder packetNumber;
+        public FourByteDecoder categoryPacketNumber;
         public OneByteDecoder partialPacketIndex;
         public OneByteDecoder partialPacketNumber;
         public OneByteDecoder packetType;
@@ -12,8 +12,8 @@ namespace pcars
 
         public PacketBaseDecoder()
         {
-            packetNumber = new UIntDecoder();
-            categoryPacketNumber = new UIntDecoder();
+            packetNumber = new FourByteDecoder();
+            categoryPacketNumber = new FourByteDecoder();
             partialPacketIndex = new OneByteDecoder();
             partialPacketNumber = new OneByteDecoder();
             packetType = new OneByteDecoder();
