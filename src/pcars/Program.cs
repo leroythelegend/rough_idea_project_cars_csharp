@@ -17,8 +17,41 @@ namespace pcars
 
                     //Console.WriteLine("Packet Type            " + packetBase.packetType.UInt());
 
+                    if (packetBase.packetType.UInt() == 2 && bytes.Length == 1136)
+                    {
+                        Console.WriteLine("Packet Type            " + packetBase.packetType.UInt());
 
-                    if (packetBase.packetType.UInt() == 1 && bytes.Length == 308)
+                        ParticipantsDataDecoder participants = new ParticipantsDataDecoder();
+                        index = 0;
+                        participants.Decode(ref bytes, ref index);
+
+                        Console.WriteLine("participants Changed Timestamp                   " +
+                                          participants.participantsChangedTimestamp.UInt());
+
+                        // I get a bunch of different names here not sure how this works
+                        for (int i = 0; i < 16; ++i)
+                        {
+                            Console.WriteLine("name " + i + "                " +
+                                              participants.name.String(i));
+                        }
+
+                        for (int i = 0; i < 16; ++i)
+                        {
+                            Console.WriteLine("nationality " + i + "         " +
+                                              participants.nationality.UInt(i));
+                        }
+
+                        for (int i = 0; i < 16; ++i)
+                        {
+                            Console.WriteLine("index " + i + "               " +
+                                              participants.index.UShort(i));
+                        }
+
+                    }
+
+                    //if (packetBase.packetType.UInt() == 1 && bytes.Length == 308)
+                    //disable
+                    if (packetBase.packetType.UInt() == 10000 && bytes.Length == 308)
                     {
                         Console.WriteLine("Packet Type            " + packetBase.packetType.UInt());
 
@@ -78,7 +111,7 @@ namespace pcars
                                           race.enforcedPitStopLap.Int());
 
                     }
-                    // if (packetBase.packetType.UInt() == 0 && bytes.Length == 559)
+                    //if (packetBase.packetType.UInt() == 0 && bytes.Length == 559)
                     // disabled
                     if (packetBase.packetType.UInt() == 5555 && bytes.Length == 1063)
                     {
