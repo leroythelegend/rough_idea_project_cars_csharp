@@ -29,5 +29,11 @@ namespace pcars
         {
             return data[index].Float();
         }
+
+
+        public uint UInt(int index)
+        {
+            return data[index].UInt();
+        }
     }
 }
