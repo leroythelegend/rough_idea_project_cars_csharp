@@ -11,4 +11,4 @@ Also have done a set of C++ Classes https://github.com/leroythelegend/rough_idea
 
 ## Getting Started
 
-Just take a look at Program.cs it has where I'm upto.
+Just take a look at src/pcars/Program.cs it has where I'm upto.
