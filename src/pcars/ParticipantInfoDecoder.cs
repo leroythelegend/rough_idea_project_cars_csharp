@@ -3,35 +3,35 @@ namespace pcars
 {
     public class ParticipantInfoDecoder : CompositeDecoder
     {
-        public ShortArrayDecoder worldPosition;
-        public ShortArrayDecoder orientation;
-        public UShortDecoder currentLapDistance;
+        public TwoByteArrayDecoder worldPosition;
+        public TwoByteArrayDecoder orientation;
+        public TwoByteDecoder currentLapDistance;
         public RacePositionDecoder racePosition;
         public SectorDecoder sector;
         public HighestFlagDecoder highestFlag;
         public PitModeScheduleDecoder pitModeSchedule;
-        public UShortDecoder carIndex;
+        public TwoByteDecoder carIndex;
         public RaceStateDecoder raceState;
         public OneByteDecoder currentLap;
-        public FloatDecoder currentTime;
-        public FloatDecoder currentSectorTime;
-        public UShortDecoder participantIndex;
+        public FourByteDecoder currentTime;
+        public FourByteDecoder currentSectorTime;
+        public TwoByteDecoder participantIndex;
 
         public ParticipantInfoDecoder()
         {
-            worldPosition = new ShortArrayDecoder(3);
-            orientation = new ShortArrayDecoder(3);
-            currentLapDistance = new UShortDecoder();
+            worldPosition = new TwoByteArrayDecoder(3);
+            orientation = new TwoByteArrayDecoder(3);
+            currentLapDistance = new TwoByteDecoder();
             racePosition = new RacePositionDecoder();
             sector = new SectorDecoder();
             highestFlag = new HighestFlagDecoder();
             pitModeSchedule = new PitModeScheduleDecoder();
-            carIndex = new UShortDecoder();
+            carIndex = new TwoByteDecoder();
             raceState = new RaceStateDecoder();
             currentLap = new OneByteDecoder();
-            currentTime = new FloatDecoder();
-            currentSectorTime = new FloatDecoder();
-            participantIndex = new UShortDecoder();
+            currentTime = new FourByteDecoder();
+            currentSectorTime = new FourByteDecoder();
+            participantIndex = new TwoByteDecoder();
 
             base.Add(worldPosition);
             base.Add(orientation);
