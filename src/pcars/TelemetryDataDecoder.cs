@@ -1,7 +1,7 @@
 ﻿using System;
 namespace pcars
 {
-    public class TelemetryDataDecoder : CompositeDecoder
+    public class TelemetryDataDecoder : PacketDecoder
     {
         private readonly int TYRE_NAME_LENGTH_MAX = 40;
 

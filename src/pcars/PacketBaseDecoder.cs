@@ -1,7 +1,7 @@
 ﻿using System;
 namespace pcars
 {
-    public class PacketBaseDecoder : CompositeDecoder
+    public class PacketBaseDecoder : PacketDecoder
     {
         public FourByteDecoder packetNumber;
         public FourByteDecoder categoryPacketNumber;

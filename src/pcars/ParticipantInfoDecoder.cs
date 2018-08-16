@@ -1,7 +1,7 @@
 ﻿using System;
 namespace pcars
 {
-    public class ParticipantInfoDecoder : CompositeDecoder
+    public class ParticipantInfoDecoder : PacketDecoder
     {
         public TwoByteArrayDecoder worldPosition;
         public TwoByteArrayDecoder orientation;

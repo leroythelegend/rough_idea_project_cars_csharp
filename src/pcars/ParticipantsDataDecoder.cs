@@ -1,7 +1,7 @@
 ﻿using System;
 namespace pcars
 {
-    public class ParticipantsDataDecoder : CompositeDecoder
+    public class ParticipantsDataDecoder : PacketDecoder
     {
         
         private readonly int PARTICIPANTS_PER_PACKET = 16;
