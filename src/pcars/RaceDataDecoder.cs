@@ -1,7 +1,7 @@
 ﻿using System;
 namespace pcars
 {
-    public class RaceDataDecoder : CompositeDecoder
+    public class RaceDataDecoder : PacketDecoder
     {
         private readonly int TRACKNAME_LENGTH_MAX = 64;
         

@@ -1,7 +1,7 @@
 ﻿using System;
 namespace pcars
 {
-    public class TimingsDataDecoder : CompositeDecoder
+    public class TimingsDataDecoder : PacketDecoder
     {
 
         public PacketBaseDecoder packetBase;

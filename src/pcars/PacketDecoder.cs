@@ -3,11 +3,11 @@ using System.Collections.Generic;
 
 namespace pcars
 {
-    public class CompositeDecoder : IDecoder
+    public class PacketDecoder : IDecoder
     {
         private List<IDecoder> decoders;
 
-        public CompositeDecoder()
+        public PacketDecoder()
         {
             decoders = new List<IDecoder>();
         }
