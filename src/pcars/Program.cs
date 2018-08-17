@@ -16,8 +16,49 @@ namespace pcars
                     packetBase.Decode(ref bytes, ref index);
 
                     //Console.WriteLine("Packet Type            " + packetBase.packetType.UInt());
+                    if (packetBase.packetType.UInt() == 4 && bytes.Length == 24)
+                    {
+                        Console.WriteLine("Packet Type            " + packetBase.packetType.UInt());
 
-                    if (packetBase.packetType.UInt() == 2 && bytes.Length == 1136)
+                        GameStateDataDecoder gamestate = new GameStateDataDecoder();
+                        index = 0;
+                        gamestate.Decode(ref bytes, ref index);
+
+                        Console.WriteLine("build version number                   " +
+                                          gamestate.buildVersionNumber.UShort());
+
+                        Console.WriteLine("game state                             " +
+                                          gamestate.gameState.GameState());
+                        
+                        Console.WriteLine("session state                          " +
+                                          gamestate.gameState.SessionState());
+
+                        Console.WriteLine("ambient Temperature                    " +
+                                          gamestate.ambientTemperature.Int());
+
+                        Console.WriteLine("track Temperature                      " +
+                                          gamestate.trackTemperature.Int());
+
+                        Console.WriteLine("rain Density                           " +
+                                          gamestate.rainDensity.UInt());
+
+                        Console.WriteLine("snow Density                           " +
+                                          gamestate.snowDensity.UInt());
+
+                        Console.WriteLine("wind Speed                             " +
+                                          gamestate.windSpeed.Int());
+
+                        Console.WriteLine("wind DirectionX                   " +
+                                          gamestate.windDirectionX.Int());
+
+                        Console.WriteLine("wind DirectionY                   " +
+                                          gamestate.windDirectionY.Int());
+
+                    }
+
+                    // if (packetBase.packetType.UInt() == 2 && bytes.Length == 1136)
+                        //disabled
+                    if (packetBase.packetType.UInt() == 2000 && bytes.Length == 1136)
                     {
                         Console.WriteLine("Packet Type            " + packetBase.packetType.UInt());
 
