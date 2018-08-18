@@ -16,7 +16,56 @@ namespace pcars
                     packetBase.Decode(ref bytes, ref index);
 
                     //Console.WriteLine("Packet Type            " + packetBase.packetType.UInt());
-                    if (packetBase.packetType.UInt() == 4 && bytes.Length == 24)
+
+                    if (packetBase.packetType.UInt() == 7 && bytes.Length == 1040)
+                    {
+                        Console.WriteLine("Packet Type            " + packetBase.packetType.UInt());
+
+                        TimeStatsDataDecoder timestats = new TimeStatsDataDecoder();
+                        index = 0;
+                        timestats.Decode(ref bytes, ref index);
+
+                        Console.WriteLine("participants Changed Timestamp                   " +
+                                          timestats.participantsChangedTimestamp.UInt());
+                        
+
+                        for (int i = 0; i < 32; ++i)
+                        {
+                            Console.WriteLine("fastest lap time " + i + "                       " +
+                                              timestats.stats.ParticipantsStatsArray(i).fastestLapTime.TimeStamp());
+
+                            Console.WriteLine("fastest sector 1 time " + i + "                  " +
+                                              timestats.stats.ParticipantsStatsArray(i).fastestSector1Time.TimeStamp());
+
+
+                            Console.WriteLine("fastest sector 2 time " + i + "                  " +
+                                              timestats.stats.ParticipantsStatsArray(i).fastestSector2Time.TimeStamp());
+
+
+                            Console.WriteLine("fastest sector 3 time " + i + "                  " +
+                                              timestats.stats.ParticipantsStatsArray(i).fastestSector3Time.TimeStamp());
+
+
+                            Console.WriteLine("last lap time " + i + "                          " +
+                                              timestats.stats.ParticipantsStatsArray(i).lastLapTime.TimeStamp());
+
+
+                            Console.WriteLine("last sector time " + i + "                       " +
+                                              timestats.stats.ParticipantsStatsArray(i).lastSectorTime.TimeStamp());
+
+
+                            Console.WriteLine("participant Online Rep " + i + "                 " +
+                                              timestats.stats.ParticipantsStatsArray(i).participantOnlineRep.UInt());
+
+
+                            Console.WriteLine("MP Participant Index " + i + "                   " +
+                                              timestats.stats.ParticipantsStatsArray(i).MPParticipantIndex.UShort());
+                        }
+                    }
+
+                    // if (packetBase.packetType.UInt() == 4 && bytes.Length == 24)
+                    // disable 
+                    if (packetBase.packetType.UInt() == 4000 && bytes.Length == 24)
                     {
                         Console.WriteLine("Packet Type            " + packetBase.packetType.UInt());
 
@@ -671,76 +720,76 @@ namespace pcars
                         
                         // Not sure which one is which
                         Console.WriteLine("world position 0         " +
-                                          timing.participants.data[timing.localParticipantIndex.Short()].worldPosition.Short(0));
+                                          timing.participants.ParticipantInfoArray(timing.localParticipantIndex.Short()).worldPosition.Short(0));
 
                         Console.WriteLine("world position 1         " +
-                                          timing.participants.data[timing.localParticipantIndex.Short()].worldPosition.Short(1));
+                                          timing.participants.ParticipantInfoArray(timing.localParticipantIndex.Short()).worldPosition.Short(1));
 
                         Console.WriteLine("world position 2         " +
-                                          timing.participants.data[timing.localParticipantIndex.Short()].worldPosition.Short(2));
+                                          timing.participants.ParticipantInfoArray(timing.localParticipantIndex.Short()).worldPosition.Short(2));
                     
                         // Direction you are facing seems to go between 520-0
                         Console.WriteLine("orientation 0            " +
-                                          timing.participants.data[timing.localParticipantIndex.Short()].orientation.Short(0));
+                                          timing.participants.ParticipantInfoArray(timing.localParticipantIndex.Short()).orientation.Short(0));
 
                         // these two might have something to do with pitch of the car?
                         Console.WriteLine("orientation 1            " +
-                                          timing.participants.data[timing.localParticipantIndex.Short()].orientation.Short(1));
+                                          timing.participants.ParticipantInfoArray(timing.localParticipantIndex.Short()).orientation.Short(1));
 
                         Console.WriteLine("orientation 2            " +
-                                          timing.participants.data[timing.localParticipantIndex.Short()].orientation.Short(2));
+                                          timing.participants.ParticipantInfoArray(timing.localParticipantIndex.Short()).orientation.Short(2));
                     
                         Console.WriteLine("current lap distance     " +
-                                          timing.participants.data[timing.localParticipantIndex.Short()].currentLapDistance.UShort());
+                                          timing.participants.ParticipantInfoArray(timing.localParticipantIndex.Short()).currentLapDistance.UShort());
 
                         Console.WriteLine("Is Active                " +
-                                          timing.participants.data[timing.localParticipantIndex.Short()].racePosition.IsActive());
+                                          timing.participants.ParticipantInfoArray(timing.localParticipantIndex.Short()).racePosition.IsActive());
                     
                         Console.WriteLine("Race Position            " +
-                                          timing.participants.data[timing.localParticipantIndex.Short()].racePosition.RacePosition());
+                                          timing.participants.ParticipantInfoArray(timing.localParticipantIndex.Short()).racePosition.RacePosition());
                     
                         Console.WriteLine("Sector                   " +
-                                          timing.participants.data[timing.localParticipantIndex.Short()].sector.Sector());
+                                          timing.participants.ParticipantInfoArray(timing.localParticipantIndex.Short()).sector.Sector());
                         
                         Console.WriteLine("Extra world x            " +
-                                          timing.participants.data[timing.localParticipantIndex.Short()].sector.XExtraPrecision());
+                                          timing.participants.ParticipantInfoArray(timing.localParticipantIndex.Short()).sector.XExtraPrecision());
                     
                         Console.WriteLine("Extra world z            " +
-                                          timing.participants.data[timing.localParticipantIndex.Short()].sector.ZExtraPrecision());
+                                          timing.participants.ParticipantInfoArray(timing.localParticipantIndex.Short()).sector.ZExtraPrecision());
                         
                         Console.WriteLine("Flag Colours             " +
-                                          timing.participants.data[timing.localParticipantIndex.Short()].highestFlag.FlagColours());
+                                          timing.participants.ParticipantInfoArray(timing.localParticipantIndex.Short()).highestFlag.FlagColours());
 
                         Console.WriteLine("Flag Reason              " +
-                                          timing.participants.data[timing.localParticipantIndex.Short()].highestFlag.FlagReason());
+                                          timing.participants.ParticipantInfoArray(timing.localParticipantIndex.Short()).highestFlag.FlagReason());
                     
                         Console.WriteLine("Pit Mode                 " +
-                                          timing.participants.data[timing.localParticipantIndex.Short()].pitModeSchedule.PitMode());
+                                          timing.participants.ParticipantInfoArray(timing.localParticipantIndex.Short()).pitModeSchedule.PitMode());
                         
                         Console.WriteLine("Pit Schedule             " +
-                                          timing.participants.data[timing.localParticipantIndex.Short()].pitModeSchedule.PitSchedule());
+                                          timing.participants.ParticipantInfoArray(timing.localParticipantIndex.Short()).pitModeSchedule.PitSchedule());
 
                         // Car Index is broken waiting on patch
                         Console.WriteLine("Car Index                " +
-                                          timing.participants.data[timing.localParticipantIndex.Short()].carIndex.UShort());
+                                          timing.participants.ParticipantInfoArray(timing.localParticipantIndex.Short()).carIndex.UShort());
                     
                         Console.WriteLine("Race State               " +
-                                          timing.participants.data[timing.localParticipantIndex.Short()].raceState.RaceState());
+                                          timing.participants.ParticipantInfoArray(timing.localParticipantIndex.Short()).raceState.RaceState());
                         
                         Console.WriteLine("Invalid Lap              " +
-                                          timing.participants.data[timing.localParticipantIndex.Short()].raceState.InvalidLap());
+                                          timing.participants.ParticipantInfoArray(timing.localParticipantIndex.Short()).raceState.InvalidLap());
                         
                         Console.WriteLine("Current Lap              " +
-                                          timing.participants.data[timing.localParticipantIndex.Short()].currentLap.UInt());
+                                          timing.participants.ParticipantInfoArray(timing.localParticipantIndex.Short()).currentLap.UInt());
 
                         Console.WriteLine("Current Time             " +
-                                          timing.participants.data[timing.localParticipantIndex.Short()].currentTime.TimeStamp());
+                                          timing.participants.ParticipantInfoArray(timing.localParticipantIndex.Short()).currentTime.TimeStamp());
 
                         Console.WriteLine("Current Sector Time      " +
-                                          timing.participants.data[timing.localParticipantIndex.Short()].currentSectorTime.TimeStamp());
+                                          timing.participants.ParticipantInfoArray(timing.localParticipantIndex.Short()).currentSectorTime.TimeStamp());
 
                         Console.WriteLine("Participant Index        " +
-                                          timing.participants.data[timing.localParticipantIndex.Short()].participantIndex.UShort());
+                                          timing.participants.ParticipantInfoArray(timing.localParticipantIndex.Short()).participantIndex.UShort());
                     
                     }
                 }

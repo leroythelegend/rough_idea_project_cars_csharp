@@ -44,9 +44,9 @@ namespace pcars
             if (IsTimedEvent())
             {
                 TimeSpan time = new TimeSpan();
+
                 time = TimeSpan.FromMinutes((lapsTimeInEvent.UShort() & 32767) * 5);
                 return time.ToString("g");
-                //return (lapsTimeInEvent.UShort() & 32767) * 5;
             }
             return "Not Timed";
         }
