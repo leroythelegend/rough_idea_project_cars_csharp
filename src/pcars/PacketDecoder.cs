@@ -5,7 +5,7 @@ namespace pcars
 {
     public class PacketDecoder : IDecoder
     {
-        private List<IDecoder> decoders;
+        readonly List<IDecoder> decoders;
 
         public PacketDecoder()
         {

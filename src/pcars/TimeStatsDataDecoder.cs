@@ -1,7 +1,7 @@
 ﻿using System;
 namespace pcars
 {
-    public class TimeStatsDataDecoder : PacketDecoder
+    public class TimeStatsDataDecoder : PacketDecoder, IPacket
     {
         public PacketBaseDecoder packetBase;
         public FourByteDecoder participantsChangedTimestamp;
@@ -13,9 +13,14 @@ namespace pcars
             participantsChangedTimestamp = new FourByteDecoder();
             stats = new ParticipantsStatsArrayDecoder();
 
-            base.Add(packetBase);
-            base.Add(participantsChangedTimestamp);
-            base.Add(stats);
+            Add(packetBase);
+            Add(participantsChangedTimestamp);
+            Add(stats);
+        }
+
+        public PacketBaseDecoder PacketBase()
+        {
+            return packetBase;
         }
     }
 }

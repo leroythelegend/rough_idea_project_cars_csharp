@@ -3,8 +3,8 @@ namespace pcars
 {
     public class RacePositionDecoder : IDecoder
     {
-        private TopBitDecoder topBit;
-        private BottomSevenBitDecoder bottomBits;
+        TopBitDecoder topBit;
+        readonly BottomSevenBitDecoder bottomBits;
 
         public RacePositionDecoder()
         {

@@ -3,7 +3,7 @@ namespace pcars
 {
     public class FourthBitDecoder
     {
-        private bool data;
+        bool data;
 
         public FourthBitDecoder()
         {

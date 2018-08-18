@@ -3,8 +3,8 @@ namespace pcars
 {
     public class GearNumGearsDecoder : IDecoder
     {
-        private TopFourBitDecoder numGears;
-        private BottomFourBitDecoder gear;
+        TopFourBitDecoder numGears;
+        readonly BottomFourBitDecoder gear;
 
         public GearNumGearsDecoder()
         {

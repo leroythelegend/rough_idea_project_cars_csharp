@@ -3,7 +3,7 @@ namespace pcars
 {
     public class TwoByteDecoder : IDecoder
     {
-        private Byte[] data;
+        readonly Byte[] data;
 
         public TwoByteDecoder()
         {

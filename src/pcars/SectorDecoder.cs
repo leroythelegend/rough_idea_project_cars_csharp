@@ -3,9 +3,9 @@ namespace pcars
 {
     public class SectorDecoder : IDecoder
     {
-        private TopTwoBitDecoder zExtraPrecision;
-        private SecondTwoBitDecoder xExtraPrecision;
-        private BottomFourBitDecoder sector;
+        TopTwoBitDecoder zExtraPrecision;
+        SecondTwoBitDecoder xExtraPrecision;
+        readonly BottomFourBitDecoder sector;
 
         public SectorDecoder()
         {

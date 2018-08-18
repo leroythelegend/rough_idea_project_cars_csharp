@@ -33,19 +33,19 @@ namespace pcars
             currentSectorTime = new FourByteDecoder();
             participantIndex = new TwoByteDecoder();
 
-            base.Add(worldPosition);
-            base.Add(orientation);
-            base.Add(currentLapDistance);
-            base.Add(racePosition);
-            base.Add(sector);
-            base.Add(highestFlag);
-            base.Add(pitModeSchedule);
-            base.Add(carIndex);
-            base.Add(raceState);
-            base.Add(currentLap);
-            base.Add(currentTime);
-            base.Add(currentSectorTime);
-            base.Add(participantIndex);
+            Add(worldPosition);
+            Add(orientation);
+            Add(currentLapDistance);
+            Add(racePosition);
+            Add(sector);
+            Add(highestFlag);
+            Add(pitModeSchedule);
+            Add(carIndex);
+            Add(raceState);
+            Add(currentLap);
+            Add(currentTime);
+            Add(currentSectorTime);
+            Add(participantIndex);
         }
     }
 }

@@ -3,7 +3,7 @@ namespace pcars
 {
     public class OneByteArrayDecoder : IDecoder
     {
-        private readonly int amount;
+        readonly int amount;
         public OneByteDecoder[] data;
 
         public OneByteArrayDecoder(int amount)

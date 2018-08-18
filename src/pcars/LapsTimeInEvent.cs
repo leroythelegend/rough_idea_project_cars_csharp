@@ -3,20 +3,16 @@ namespace pcars
 {
     public class LapsTimeInEvent : IDecoder
     {
-        //private TopBitDecoder isTimedEvent;
-        private TwoByteDecoder lapsTimeInEvent;
+        readonly TwoByteDecoder lapsTimeInEvent;
 
         public LapsTimeInEvent()
         {
-            //isTimedEvent = new TopBitDecoder();
             lapsTimeInEvent = new TwoByteDecoder();
         }
 
         public void Decode(ref Byte[] bytes, ref int index)
         {
             lapsTimeInEvent.Decode(ref bytes, ref index);
-            //isTimedEvent.Decode(ref bytes, ref index);
-            //index++;
         }
 
         public bool IsTimedEvent() 
@@ -25,9 +21,7 @@ namespace pcars
             {
                 return true;
             }
-            else {
-                return false;
-            }
+            return false;
         }
 
         public short Laps()
@@ -43,7 +37,7 @@ namespace pcars
         {
             if (IsTimedEvent())
             {
-                TimeSpan time = new TimeSpan();
+                var time = new TimeSpan();
 
                 time = TimeSpan.FromMinutes((lapsTimeInEvent.UShort() & 32767) * 5);
                 return time.ToString("g");

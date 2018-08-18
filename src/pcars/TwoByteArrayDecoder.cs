@@ -3,8 +3,8 @@ namespace pcars
 {
     public class TwoByteArrayDecoder : IDecoder
     {
-        private readonly int amount;
-        private TwoByteDecoder[] data;
+        readonly int amount;
+        readonly TwoByteDecoder[] data;
 
         public TwoByteArrayDecoder(int amount)
         {
@@ -32,7 +32,7 @@ namespace pcars
 
         public ushort UShort(int index)
         {
-            return (ushort)data[index].UShort();
+            return data[index].UShort();
         }
     }
 }

@@ -3,8 +3,8 @@ namespace pcars
 {
     public class FourByteArrayDecoder : IDecoder
     {
-        private readonly int amount;
-        private FourByteDecoder[] data;
+        readonly int amount;
+        readonly FourByteDecoder[] data;
 
         public FourByteArrayDecoder(int amount)
         {

@@ -1,7 +1,7 @@
 ﻿using System;
 namespace pcars
 {
-    public class GameStateDataDecoder : PacketDecoder
+    public class GameStateDataDecoder : PacketDecoder, IPacket
     {
         public PacketBaseDecoder packetBase;
         public TwoByteDecoder buildVersionNumber;
@@ -27,16 +27,20 @@ namespace pcars
             windDirectionX = new OneByteDecoder();
             windDirectionY = new OneByteDecoder();
 
-            base.Add(packetBase);
-            base.Add(buildVersionNumber);
-            base.Add(gameState);
-            base.Add(ambientTemperature);
-            base.Add(trackTemperature);
-            base.Add(rainDensity);
-            base.Add(snowDensity);
-            base.Add(windSpeed);
-            base.Add(windDirectionX);
-            base.Add(windDirectionY);
+            Add(packetBase);
+            Add(buildVersionNumber);
+            Add(gameState);
+            Add(ambientTemperature);
+            Add(trackTemperature);
+            Add(rainDensity);
+            Add(snowDensity);
+            Add(windSpeed);
+            Add(windDirectionX);
+            Add(windDirectionY);
+        }
+
+        public PacketBaseDecoder PacketBase() {
+            return packetBase;
         }
     }
 }

@@ -4,7 +4,7 @@ namespace pcars
     public class RaceStateDecoder : IDecoder
     {
         BottomThreeBitDecoder raceStateFlags;
-        FourthBitDecoder invalidLap;
+        readonly FourthBitDecoder invalidLap;
 
         public RaceStateDecoder()
         {

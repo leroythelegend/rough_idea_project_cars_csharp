@@ -1,11 +1,11 @@
 ﻿using System;
 namespace pcars
 {
-    public class ParticipantsDataDecoder : PacketDecoder
+    public class ParticipantsDataDecoder : PacketDecoder, IPacket
     {
         
-        private readonly int PARTICIPANTS_PER_PACKET = 16;
-        private readonly int PARTICIPANT_NAME_LENGTH_MAX = 64;
+        readonly int PARTICIPANTS_PER_PACKET = 16;
+        readonly int PARTICIPANT_NAME_LENGTH_MAX = 64;
 
         public PacketBaseDecoder packetBase;
         public FourByteDecoder participantsChangedTimestamp;
@@ -22,11 +22,16 @@ namespace pcars
             nationality = new FourByteArrayDecoder(PARTICIPANTS_PER_PACKET);
             index = new TwoByteArrayDecoder(PARTICIPANTS_PER_PACKET);
 
-            base.Add(packetBase);
-            base.Add(participantsChangedTimestamp);
-            base.Add(name);
-            base.Add(nationality);
-            base.Add(index);
+            Add(packetBase);
+            Add(participantsChangedTimestamp);
+            Add(name);
+            Add(nationality);
+            Add(index);
+        }
+
+        public PacketBaseDecoder PacketBase()
+        {
+            return packetBase;
         }
     }
 }

@@ -1,7 +1,7 @@
 ﻿using System;
 namespace pcars
 {
-    public class TimingsDataDecoder : PacketDecoder
+    public class TimingsDataDecoder : PacketDecoder, IPacket
     {
 
         public PacketBaseDecoder packetBase;
@@ -29,16 +29,21 @@ namespace pcars
             localParticipantIndex = new TwoByteDecoder();
             tickCount = new FourByteDecoder();
 
-            base.Add(packetBase);
-            base.Add(numParticipants);
-            base.Add(participantsChangedTimestamp);
-            base.Add(eventTimeRemaining);
-            base.Add(splitTimeAhead);
-            base.Add(splitTimeBehind);
-            base.Add(splitTime);
-            base.Add(participants);
-            base.Add(localParticipantIndex);
-            base.Add(tickCount);
+            Add(packetBase);
+            Add(numParticipants);
+            Add(participantsChangedTimestamp);
+            Add(eventTimeRemaining);
+            Add(splitTimeAhead);
+            Add(splitTimeBehind);
+            Add(splitTime);
+            Add(participants);
+            Add(localParticipantIndex);
+            Add(tickCount);
+        }
+
+        public PacketBaseDecoder PacketBase()
+        {
+            return packetBase;
         }
     }
 }
