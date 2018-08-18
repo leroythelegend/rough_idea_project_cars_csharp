@@ -5,7 +5,7 @@ namespace pcars
     {
         public const int VEHICLE_NAME_LENGTH_MAX = 64;
 
-        //public TwoByteDecoder index;
+        //public TwoByteDecoder index; // Header files says two bytes not sure this is correct
         public FourByteDecoder index;
         public FourByteDecoder vehicleClass;
         public StringMatrixDecoder name;
