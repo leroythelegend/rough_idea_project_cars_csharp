@@ -19,12 +19,12 @@ namespace pcars
             packetType = new OneByteDecoder();
             packetVersion = new OneByteDecoder();
 
-            base.Add(packetNumber);
-            base.Add(categoryPacketNumber);
-            base.Add(partialPacketIndex);
-            base.Add(partialPacketNumber);
-            base.Add(packetType);
-            base.Add(packetVersion);
+            Add(packetNumber);
+            Add(categoryPacketNumber);
+            Add(partialPacketIndex);
+            Add(partialPacketNumber);
+            Add(packetType);
+            Add(packetVersion);
         }
     }
 }

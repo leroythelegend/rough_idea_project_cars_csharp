@@ -3,7 +3,7 @@ namespace pcars
 {
     public class TopBitDecoder : IDecoder
     {
-        private bool data;
+        bool data;
 
         public TopBitDecoder()
         {

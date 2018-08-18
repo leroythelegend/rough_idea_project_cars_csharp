@@ -3,8 +3,8 @@ namespace pcars
 {
     public class GameStateDecoder : IDecoder
     {
-        private TopFourBitDecoder sessionState;
-        private BottomFourBitDecoder gameState;
+        TopFourBitDecoder sessionState;
+        readonly BottomFourBitDecoder gameState;
 
         public GameStateDecoder()
         {

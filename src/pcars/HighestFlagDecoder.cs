@@ -3,8 +3,8 @@ namespace pcars
 {
     public class HighestFlagDecoder : IDecoder
     {
-        private TopFourBitDecoder flagReason;
-        private BottomFourBitDecoder flagColour;
+        TopFourBitDecoder flagReason;
+        readonly BottomFourBitDecoder flagColour;
 
         public HighestFlagDecoder()
         {

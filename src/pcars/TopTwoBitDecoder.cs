@@ -3,7 +3,7 @@ namespace pcars
 {
     public class TopTwoBitDecoder
     {
-        private int data;
+        int data;
 
         public TopTwoBitDecoder()
         {

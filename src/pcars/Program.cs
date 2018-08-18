@@ -4,12 +4,12 @@ namespace pcars
 {
     class MainClass
     {
-        public static void Main(string[] args)
+        public static void Main()
         {
-            PacketBaseDecoder packetBase = new PacketBaseDecoder();
+            var packetBase = new PacketBaseDecoder();
             IReader reader = new UDPNonBlockingReader(5606);
             while (true) {
-                Byte[] bytes = reader.Read();
+                var bytes = reader.Read();
                 if (bytes.Length > 0)
                 {
                     int index = 0;
@@ -24,7 +24,7 @@ namespace pcars
                         Console.WriteLine("Packet index             " + packetBase.partialPacketIndex.UInt());
 
 
-                        VehicleClassNamesDataDecoder className = new VehicleClassNamesDataDecoder();
+                        var className = new VehicleClassNamesDataDecoder();
                         index = 0;
                         className.Decode(ref bytes, ref index);
 
@@ -47,7 +47,7 @@ namespace pcars
                         Console.WriteLine("Packet index             " + packetBase.partialPacketIndex.UInt());
 
 
-                        ParticipantVehicleNamesDataDecoder vehicleName = new ParticipantVehicleNamesDataDecoder();
+                        var vehicleName = new ParticipantVehicleNamesDataDecoder();
                         index = 0;
                         vehicleName.Decode(ref bytes, ref index);
 
@@ -70,7 +70,7 @@ namespace pcars
                     {
                         Console.WriteLine("Packet Type            " + packetBase.packetType.UInt());
 
-                        TimeStatsDataDecoder timestats = new TimeStatsDataDecoder();
+                        var timestats = new TimeStatsDataDecoder();
                         index = 0;
                         timestats.Decode(ref bytes, ref index);
 
@@ -118,7 +118,7 @@ namespace pcars
                     {
                         Console.WriteLine("Packet Type            " + packetBase.packetType.UInt());
 
-                        GameStateDataDecoder gamestate = new GameStateDataDecoder();
+                        var gamestate = new GameStateDataDecoder();
                         index = 0;
                         gamestate.Decode(ref bytes, ref index);
 
@@ -160,7 +160,7 @@ namespace pcars
                     {
                         Console.WriteLine("Packet Type            " + packetBase.packetType.UInt());
 
-                        ParticipantsDataDecoder participants = new ParticipantsDataDecoder();
+                        var participants = new ParticipantsDataDecoder();
                         index = 0;
                         participants.Decode(ref bytes, ref index);
 
@@ -194,7 +194,7 @@ namespace pcars
                     {
                         Console.WriteLine("Packet Type            " + packetBase.packetType.UInt());
 
-                        RaceDataDecoder race = new RaceDataDecoder();
+                        var race = new RaceDataDecoder();
                         index = 0;
                         race.Decode(ref bytes, ref index);
 
@@ -254,7 +254,7 @@ namespace pcars
                     // disabled
                     if (packetBase.packetType.UInt() == 5555 && bytes.Length == 1063)
                     {
-                        TelemetryDataDecoder telem = new TelemetryDataDecoder();
+                        var telem = new TelemetryDataDecoder();
                         index = 0;
                         telem.Decode(ref bytes, ref index);
 
@@ -747,7 +747,7 @@ namespace pcars
                     // disabled
                     if (packetBase.packetType.UInt() == 5555 && bytes.Length == 1063)
                     {
-                        TimingsDataDecoder timing = new TimingsDataDecoder();
+                        var timing = new TimingsDataDecoder();
                         index = 0;
                         timing.Decode(ref bytes, ref index);
 

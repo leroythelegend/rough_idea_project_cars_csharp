@@ -16,9 +16,9 @@ namespace pcars
             vehicleClass = new FourByteDecoder();
             name = new StringMatrixDecoder(1, VEHICLE_NAME_LENGTH_MAX);
 
-            base.Add(index);
-            base.Add(vehicleClass);
-            base.Add(name);
+            Add(index);
+            Add(vehicleClass);
+            Add(name);
         }
     }
 }

@@ -13,8 +13,8 @@ namespace pcars
             classIndex = new FourByteDecoder();
             name = new StringMatrixDecoder(1, CLASS_NAME_LENGTH_MAX);
 
-            base.Add(classIndex);
-            base.Add(name);
+            Add(classIndex);
+            Add(name);
         }
     }
 }

@@ -5,10 +5,9 @@ namespace pcars
 {
     public class StringMatrixDecoder : IDecoder
     {
-        private readonly int firstIndex;
-        private readonly int secondIndex;
-
-        private readonly string[] data;
+        readonly int firstIndex;
+        readonly int secondIndex;
+        readonly string[] data;
 
         public StringMatrixDecoder(int firstIndex, int secondIndex)
         {
@@ -21,7 +20,7 @@ namespace pcars
         {
             for (int i = 0; i < firstIndex; ++i)
             {
-                string raw = Encoding.UTF8.GetString(bytes, index, secondIndex);
+                var raw = Encoding.UTF8.GetString(bytes, index, secondIndex);
                 data[i] = raw.Substring(0, raw.IndexOf('\0'));
                 index += secondIndex;
             }

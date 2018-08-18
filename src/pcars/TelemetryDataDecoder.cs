@@ -1,9 +1,9 @@
 ﻿using System;
 namespace pcars
 {
-    public class TelemetryDataDecoder : PacketDecoder
+    public class TelemetryDataDecoder : PacketDecoder, IPacket
     {
-        private readonly int TYRE_NAME_LENGTH_MAX = 40;
+        readonly int TYRE_NAME_LENGTH_MAX = 40;
 
         public PacketBaseDecoder packetBase;
         public OneByteDecoder viewedParticipantIndex;
@@ -147,75 +147,80 @@ namespace pcars
             brakeBias = new OneByteDecoder();
             tickCount = new FourByteDecoder();
 
-            base.Add(packetBase);
-            base.Add(viewedParticipantIndex);
-            base.Add(unfilteredThrottle);
-            base.Add(unfilteredBrake);
-            base.Add(unfilteredSteering);
-            base.Add(unfilteredClutch);
-            base.Add(carFlags);
-            base.Add(oilTempCelsius);
-            base.Add(oilPressureKPa);
-            base.Add(waterTempCelsius);
-            base.Add(waterPressureKpa);
-            base.Add(fuelPressureKpa);
-            base.Add(fuelCapacity);
-            base.Add(brake);
-            base.Add(throttle);
-            base.Add(clutch);
-            base.Add(fuelLevel);
-            base.Add(speed);
-            base.Add(rpm);
-            base.Add(maxRpm);
-            base.Add(steering);
-            base.Add(gearNumGears);
-            base.Add(boostAmount);
-            base.Add(crashState);
-            base.Add(odometerKM);
-            base.Add(orientation);
-            base.Add(localVelocity);
-            base.Add(worldVelocity);
-            base.Add(angularVelocity);
-            base.Add(localAcceleration);
-            base.Add(worldAcceleration);
-            base.Add(extentsCentre);
-            base.Add(tyreFlags);
-            base.Add(terrain);
-            base.Add(tyreY);
-            base.Add(tyreRPS);
-            base.Add(tyreTemp);
-            base.Add(tyreHeightAboveGround);
-            base.Add(tyreWear);
-            base.Add(brakeDamage);
-            base.Add(suspensionDamage);
-            base.Add(brakeTempCelsius);
-            base.Add(tyreTreadTemp);
-            base.Add(tyreLayerTemp);
-            base.Add(tyreCarcassTemp);
-            base.Add(tyreRimTemp);
-            base.Add(tyreInternalAirTemp);
-            base.Add(tyreTempLeft);
-            base.Add(tyreTempCenter);
-            base.Add(tyreTempRight);
-            base.Add(wheelLocalPositionY);
-            base.Add(rideHeight);
-            base.Add(suspensionTravel);
-            base.Add(suspensionVelocity);
-            base.Add(suspensionRideHeight);
-            base.Add(airPressure);
-            base.Add(engineSpeed);
-            base.Add(engineTorque);
-            base.Add(wings);
-            base.Add(handBrake);
-            base.Add(aeroDamage);
-            base.Add(engineDamage);
-            base.Add(joyPad0);
-            base.Add(dPad);
-            base.Add(tyreCompound);
-            base.Add(turboBoostPressure);
-            base.Add(fullPosition);
-            base.Add(brakeBias);
-            base.Add(tickCount);
+            Add(packetBase);
+            Add(viewedParticipantIndex);
+            Add(unfilteredThrottle);
+            Add(unfilteredBrake);
+            Add(unfilteredSteering);
+            Add(unfilteredClutch);
+            Add(carFlags);
+            Add(oilTempCelsius);
+            Add(oilPressureKPa);
+            Add(waterTempCelsius);
+            Add(waterPressureKpa);
+            Add(fuelPressureKpa);
+            Add(fuelCapacity);
+            Add(brake);
+            Add(throttle);
+            Add(clutch);
+            Add(fuelLevel);
+            Add(speed);
+            Add(rpm);
+            Add(maxRpm);
+            Add(steering);
+            Add(gearNumGears);
+            Add(boostAmount);
+            Add(crashState);
+            Add(odometerKM);
+            Add(orientation);
+            Add(localVelocity);
+            Add(worldVelocity);
+            Add(angularVelocity);
+            Add(localAcceleration);
+            Add(worldAcceleration);
+            Add(extentsCentre);
+            Add(tyreFlags);
+            Add(terrain);
+            Add(tyreY);
+            Add(tyreRPS);
+            Add(tyreTemp);
+            Add(tyreHeightAboveGround);
+            Add(tyreWear);
+            Add(brakeDamage);
+            Add(suspensionDamage);
+            Add(brakeTempCelsius);
+            Add(tyreTreadTemp);
+            Add(tyreLayerTemp);
+            Add(tyreCarcassTemp);
+            Add(tyreRimTemp);
+            Add(tyreInternalAirTemp);
+            Add(tyreTempLeft);
+            Add(tyreTempCenter);
+            Add(tyreTempRight);
+            Add(wheelLocalPositionY);
+            Add(rideHeight);
+            Add(suspensionTravel);
+            Add(suspensionVelocity);
+            Add(suspensionRideHeight);
+            Add(airPressure);
+            Add(engineSpeed);
+            Add(engineTorque);
+            Add(wings);
+            Add(handBrake);
+            Add(aeroDamage);
+            Add(engineDamage);
+            Add(joyPad0);
+            Add(dPad);
+            Add(tyreCompound);
+            Add(turboBoostPressure);
+            Add(fullPosition);
+            Add(brakeBias);
+            Add(tickCount);
+        }
+
+        public PacketBaseDecoder PacketBase()
+        {
+            return packetBase;
         }
     }
 }

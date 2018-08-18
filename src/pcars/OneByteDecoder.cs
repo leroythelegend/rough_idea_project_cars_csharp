@@ -3,7 +3,7 @@ namespace pcars
 {
     public class OneByteDecoder : IDecoder
     {
-        private Byte data;
+        Byte data;
         public OneByteDecoder()
         {
             data = 0x00;

@@ -23,14 +23,14 @@ namespace pcars
             participantOnlineRep = new FourByteDecoder();
             MPParticipantIndex = new TwoByteDecoder();
 
-            base.Add(fastestLapTime);
-            base.Add(lastLapTime);
-            base.Add(lastSectorTime);
-            base.Add(fastestSector1Time);
-            base.Add(fastestSector2Time);
-            base.Add(fastestSector3Time);
-            base.Add(participantOnlineRep);
-            base.Add(MPParticipantIndex);
+            Add(fastestLapTime);
+            Add(lastLapTime);
+            Add(lastSectorTime);
+            Add(fastestSector1Time);
+            Add(fastestSector2Time);
+            Add(fastestSector3Time);
+            Add(participantOnlineRep);
+            Add(MPParticipantIndex);
         }
     }
 }

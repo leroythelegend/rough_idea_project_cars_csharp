@@ -3,7 +3,7 @@ namespace pcars
 {
     public class FourByteDecoder : IDecoder
     {
-        private readonly Byte[] data;
+        readonly Byte[] data;
 
         public FourByteDecoder()
         {
@@ -39,8 +39,8 @@ namespace pcars
 
         public string TimeStamp()
         {
-            TimeSpan time = new TimeSpan();
-            float timeData = BitConverter.ToSingle(data, 0);
+            var time = new TimeSpan();
+            var timeData = BitConverter.ToSingle(data, 0);
             if (timeData < TimeSpan.MaxValue.Milliseconds &&
                 timeData > TimeSpan.MinValue.TotalMilliseconds)
             {

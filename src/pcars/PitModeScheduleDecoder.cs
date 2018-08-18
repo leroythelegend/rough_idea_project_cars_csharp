@@ -3,8 +3,8 @@ namespace pcars
 {
     public class PitModeScheduleDecoder : IDecoder
     {
-        private TopFourBitDecoder pitSchedule;
-        private BottomFourBitDecoder pitMode;
+        TopFourBitDecoder pitSchedule;
+        readonly BottomFourBitDecoder pitMode;
 
         public PitModeScheduleDecoder()
         {

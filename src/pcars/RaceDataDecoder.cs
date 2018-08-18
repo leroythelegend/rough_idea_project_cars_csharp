@@ -1,9 +1,9 @@
 ﻿using System;
 namespace pcars
 {
-    public class RaceDataDecoder : PacketDecoder
+    public class RaceDataDecoder : PacketDecoder, IPacket
     {
-        private readonly int TRACKNAME_LENGTH_MAX = 64;
+        readonly int TRACKNAME_LENGTH_MAX = 64;
         
         public PacketBaseDecoder packetBase;
         public FourByteDecoder worldFastestLapTime;
@@ -41,22 +41,27 @@ namespace pcars
             lapsTimeInEvent = new LapsTimeInEvent(); // need to test this in binary
             enforcedPitStopLap = new OneByteDecoder();
 
-            base.Add(packetBase);
-            base.Add(worldFastestLapTime);
-            base.Add(personalFastestLapTime);
-            base.Add(personalFastestSector1Time);
-            base.Add(personalFastestSector2Time);
-            base.Add(personalFastestSector3Time);
-            base.Add(worldFastestSector1Time);
-            base.Add(worldFastestSector2Time);
-            base.Add(worldFastestSector3Time);
-            base.Add(trackLength);
-            base.Add(trackLocation);
-            base.Add(trackVariation);
-            base.Add(translatedTrackLocation);
-            base.Add(translatedTrackVariation);
-            base.Add(lapsTimeInEvent);
-            base.Add(enforcedPitStopLap);
+            Add(packetBase);
+            Add(worldFastestLapTime);
+            Add(personalFastestLapTime);
+            Add(personalFastestSector1Time);
+            Add(personalFastestSector2Time);
+            Add(personalFastestSector3Time);
+            Add(worldFastestSector1Time);
+            Add(worldFastestSector2Time);
+            Add(worldFastestSector3Time);
+            Add(trackLength);
+            Add(trackLocation);
+            Add(trackVariation);
+            Add(translatedTrackLocation);
+            Add(translatedTrackVariation);
+            Add(lapsTimeInEvent);
+            Add(enforcedPitStopLap);
+        }
+
+        public PacketBaseDecoder PacketBase()
+        {
+            return packetBase;
         }
     }
 }
