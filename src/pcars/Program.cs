@@ -17,7 +17,56 @@ namespace pcars
 
                     //Console.WriteLine("Packet Type            " + packetBase.packetType.UInt());
 
-                    if (packetBase.packetType.UInt() == 7 && bytes.Length == 1040)
+                    if (packetBase.packetType.UInt() == 8 && packetBase.partialPacketIndex.UInt() == 2)
+                    {
+                        Console.WriteLine("Packet Type              " + packetBase.packetType.UInt());
+                        Console.WriteLine("Packet number            " + packetBase.partialPacketNumber.UInt());
+                        Console.WriteLine("Packet index             " + packetBase.partialPacketIndex.UInt());
+
+
+                        VehicleClassNamesDataDecoder className = new VehicleClassNamesDataDecoder();
+                        index = 0;
+                        className.Decode(ref bytes, ref index);
+
+                        for (int i = 0; i < 60; ++i)
+                        {
+                            Console.WriteLine("class index " + i + "                 " +
+                                              className.classInfo.ClassInfoArray(i).classIndex.UInt());
+
+                            Console.WriteLine("name " + i + "                        " +
+                                              className.classInfo.ClassInfoArray(i).name.String(0));
+                        }
+                    }
+
+                    if (packetBase.packetType.UInt() == 8 && packetBase.partialPacketIndex.UInt() == 1)
+                    // disabled
+                    // if (packetBase.packetType.UInt() == 8000 && packetBase.partialPacketIndex.UInt() == 1)
+                    {
+                        Console.WriteLine("Packet Type              " + packetBase.packetType.UInt());
+                        Console.WriteLine("Packet number            " + packetBase.partialPacketNumber.UInt());
+                        Console.WriteLine("Packet index             " + packetBase.partialPacketIndex.UInt());
+
+
+                        ParticipantVehicleNamesDataDecoder vehicleName = new ParticipantVehicleNamesDataDecoder();
+                        index = 0;
+                        vehicleName.Decode(ref bytes, ref index);
+
+                        for (int i = 0; i < 16; ++i)
+                        {
+                            Console.WriteLine("index " + i + "                       " +
+                                              vehicleName.vehicles.VehicleInfoArray(i).index.UInt());
+
+                            Console.WriteLine("class " + i + "                       " +
+                                              vehicleName.vehicles.VehicleInfoArray(i).vehicleClass.UInt());
+
+                            Console.WriteLine("name " + i + "                        " +
+                                              vehicleName.vehicles.VehicleInfoArray(i).name.String(0));
+                        }
+                    }
+
+                    //if (packetBase.packetType.UInt() == 7 && bytes.Length == 1040)
+                        // disable
+                    if (packetBase.packetType.UInt() == 7000 && bytes.Length == 1040)
                     {
                         Console.WriteLine("Packet Type            " + packetBase.packetType.UInt());
 
