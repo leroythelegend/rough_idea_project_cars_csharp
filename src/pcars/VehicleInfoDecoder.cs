@@ -1,0 +1,24 @@
+﻿using System;
+namespace pcars
+{
+    public class VehicleInfoDecoder : PacketDecoder
+    {
+        public const int VEHICLE_NAME_LENGTH_MAX = 64;
+
+        //public TwoByteDecoder index;
+        public FourByteDecoder index;
+        public FourByteDecoder vehicleClass;
+        public StringMatrixDecoder name;
+
+        public VehicleInfoDecoder()
+        {
+            index = new FourByteDecoder();
+            vehicleClass = new FourByteDecoder();
+            name = new StringMatrixDecoder(1, VEHICLE_NAME_LENGTH_MAX);
+
+            base.Add(index);
+            base.Add(vehicleClass);
+            base.Add(name);
+        }
+    }
+}
