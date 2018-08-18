@@ -11,4 +11,10 @@ Also have done a set of C++ Classes https://github.com/leroythelegend/rough_idea
 
 ## Getting Started
 
+Finshed UDP classes for capturing packets.
+
+Finshed the packet decoding you can now use these classes to collect the data.
+
+WIP going to try and add some sort of protocol classes for capturing packets.
+
 Just take a look at src/pcars/Program.cs it has where I'm upto.
