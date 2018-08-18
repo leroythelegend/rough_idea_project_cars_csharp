@@ -4,7 +4,7 @@ namespace pcars
     public class ParticipantInfoArrayDecoder : IDecoder
     {
         public const int UDP_STREAMER_PARTICIPANTS_SUPPORTED = 32;
-        public ParticipantInfoDecoder[] data;
+        private ParticipantInfoDecoder[] data;
 
         private int amount;
 
@@ -26,9 +26,9 @@ namespace pcars
             }
         }
 
-        public ParticipantInfoDecoder[] ParticipantInfoArray()
+        public ParticipantInfoDecoder ParticipantInfoArray(int index)
         {
-            return data;
+            return data[index];
         }
     }
 }

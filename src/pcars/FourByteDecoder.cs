@@ -40,8 +40,14 @@ namespace pcars
         public string TimeStamp()
         {
             TimeSpan time = new TimeSpan();
-            time = TimeSpan.FromSeconds(BitConverter.ToSingle(data, 0));
-            return time.ToString("g");
+            float timeData = BitConverter.ToSingle(data, 0);
+            if (timeData < TimeSpan.MaxValue.Milliseconds &&
+                timeData > TimeSpan.MinValue.TotalMilliseconds)
+            {
+                time = TimeSpan.FromSeconds(BitConverter.ToSingle(data, 0));
+                return time.ToString("g");
+            }
+            return string.Empty;
         }
     }
 }
