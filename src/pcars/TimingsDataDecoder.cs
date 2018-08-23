@@ -1,9 +1,8 @@
 ﻿using System;
 namespace pcars
 {
-    public class TimingsDataDecoder : PacketDecoder, IPacket
+    public class TimingsDataDecoder : PacketDecoder
     {
-
         public PacketBaseDecoder packetBase;
         public OneByteDecoder numParticipants;
         public FourByteDecoder participantsChangedTimestamp;
@@ -39,11 +38,6 @@ namespace pcars
             Add(participants);
             Add(localParticipantIndex);
             Add(tickCount);
-        }
-
-        public PacketBaseDecoder PacketBase()
-        {
-            return packetBase;
         }
     }
 }

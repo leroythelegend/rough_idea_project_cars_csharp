@@ -14,10 +14,8 @@ namespace pcars
 
         public void Decode(ref Byte[] bytes, ref int index)
         {
-            data[0] = bytes[index];
-            ++index;
-            data[1] = bytes[index];
-            ++index;
+            data[0] = bytes[index++];
+            data[1] = bytes[index++];
         }
 
         public short Short()
@@ -26,6 +24,16 @@ namespace pcars
         }
 
         public ushort UShort()
+        {
+            return BitConverter.ToUInt16(data, 0);
+        }
+
+        public int Int()
+        {
+            return BitConverter.ToInt16(data, 0);
+        }
+
+        public uint UInt()
         {
             return BitConverter.ToUInt16(data, 0);
         }

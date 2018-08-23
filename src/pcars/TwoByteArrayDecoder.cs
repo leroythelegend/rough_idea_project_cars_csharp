@@ -34,5 +34,15 @@ namespace pcars
         {
             return data[index].UShort();
         }
+
+        public int Int(int index)
+        {
+            return data[index].Int();
+        }
+
+        public uint UInt(int index)
+        {
+            return data[index].UInt();
+        }
     }
 }
