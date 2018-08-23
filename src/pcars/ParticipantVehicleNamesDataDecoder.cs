@@ -1,7 +1,7 @@
 ﻿using System;
 namespace pcars
 {
-    public class ParticipantVehicleNamesDataDecoder : PacketDecoder, IPacket
+    public class ParticipantVehicleNamesDataDecoder : PacketDecoder
     {
         public PacketBaseDecoder packetBase;
         public VehicleInfoArrayDecoder vehicles;
@@ -13,11 +13,6 @@ namespace pcars
 
             Add(packetBase);
             Add(vehicles);
-        }
-
-        public PacketBaseDecoder PacketBase()
-        {
-            return packetBase;
         }
     }
 }

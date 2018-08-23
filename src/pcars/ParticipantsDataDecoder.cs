@@ -1,7 +1,7 @@
 ﻿using System;
 namespace pcars
 {
-    public class ParticipantsDataDecoder : PacketDecoder, IPacket
+    public class ParticipantsDataDecoder : PacketDecoder
     {
         
         readonly int PARTICIPANTS_PER_PACKET = 16;
@@ -27,11 +27,6 @@ namespace pcars
             Add(name);
             Add(nationality);
             Add(index);
-        }
-
-        public PacketBaseDecoder PacketBase()
-        {
-            return packetBase;
         }
     }
 }

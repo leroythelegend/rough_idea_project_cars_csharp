@@ -1,7 +1,7 @@
 ﻿using System;
 namespace pcars
 {
-    public class TelemetryDataDecoder : PacketDecoder, IPacket
+    public class TelemetryDataDecoder : PacketDecoder
     {
         readonly int TYRE_NAME_LENGTH_MAX = 40;
 
@@ -216,11 +216,6 @@ namespace pcars
             Add(fullPosition);
             Add(brakeBias);
             Add(tickCount);
-        }
-
-        public PacketBaseDecoder PacketBase()
-        {
-            return packetBase;
         }
     }
 }

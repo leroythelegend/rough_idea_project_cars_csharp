@@ -1,10 +1,10 @@
 ﻿using System;
 namespace pcars
 {
-    public class RaceDataDecoder : PacketDecoder, IPacket
+    public class RaceDataDecoder : PacketDecoder
     {
         readonly int TRACKNAME_LENGTH_MAX = 64;
-        
+
         public PacketBaseDecoder packetBase;
         public FourByteDecoder worldFastestLapTime;
         public FourByteDecoder personalFastestLapTime;
@@ -57,11 +57,6 @@ namespace pcars
             Add(translatedTrackVariation);
             Add(lapsTimeInEvent);
             Add(enforcedPitStopLap);
-        }
-
-        public PacketBaseDecoder PacketBase()
-        {
-            return packetBase;
         }
     }
 }

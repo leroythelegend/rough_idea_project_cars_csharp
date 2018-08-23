@@ -1,7 +1,7 @@
 ﻿using System;
 namespace pcars
 {
-    public class GameStateDataDecoder : PacketDecoder, IPacket
+    public class GameStateDataDecoder : PacketDecoder
     {
         public PacketBaseDecoder packetBase;
         public TwoByteDecoder buildVersionNumber;
@@ -37,10 +37,6 @@ namespace pcars
             Add(windSpeed);
             Add(windDirectionX);
             Add(windDirectionY);
-        }
-
-        public PacketBaseDecoder PacketBase() {
-            return packetBase;
         }
     }
 }
