@@ -11,10 +11,33 @@ Also have done a set of C++ Classes https://github.com/leroythelegend/rough_idea
 
 ## Getting Started
 
-Finshed UDP classes for capturing packets.
+## Capturing UDP packets
 
-Finshed the packet decoding you can now use these classes to collect the data.
+If you are interested in getting the raw packets and decoding them yourself just use these classes
 
-WIP going to try and add some sort of protocol classes for capturing packets.
+# UDPBlockingReader 
 
-Just take a look at src/pcars/Program.cs it has where I'm upto.
+Will wait/block until there is some data to read. I don't recommend using, this however if you really want something super simple and just want to decode some specific data go for it.
+
+```
+        UDPBlockingReader reader(5606);
+        var data = reader.Read()
+        // Process data       
+```
+
+# UDPNonBlockingReader
+
+Will not wait and return an empty Byte Array if there is no data ready to read. If there is data to read returns the whole packet.
+
+```
+        UDPBlockingReader reader(5606);
+        var bytes = reader.Read();
+        while (true)
+        {
+           if (bytes.Length > 0)
+           {
+              // Process data
+           }
+        }
+```
+
