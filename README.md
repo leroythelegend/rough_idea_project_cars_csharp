@@ -83,7 +83,7 @@ Brief example
 
           telem.Decode(ref bytes, ref index);     // now decode the bytes into a telem object
           
-          Console.WriteLine(telem.EngineSpeed()); // Show the current engine speed
+          Console.WriteLine(telem.EngineSpeed().Int()); // Show the current engine speed
       }
 ```
 
