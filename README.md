@@ -11,11 +11,11 @@ Also have done a set of C++ Classes https://github.com/leroythelegend/rough_idea
 
 ## Getting Started
 
-## Capturing UDP packets
+# Capturing UDP packets
 
 If you are interested in getting the raw packets and decoding them yourself just one of use these classes
 
-# UDPBlockingReader 
+## UDPBlockingReader 
 
 Will wait/block until there is some data to read. I don't recommend using this, however if you really want something super simple and just want to decode some specific data go for it.
 
@@ -25,7 +25,7 @@ Will wait/block until there is some data to read. I don't recommend using this, 
         // Process data       
 ```
 
-# UDPNonBlockingReader
+## UDPNonBlockingReader
 
 Will not wait and return an empty Byte Array if there is no data ready to read. If there is data to read returns the whole packet.
 
@@ -41,7 +41,7 @@ Will not wait and return an empty Byte Array if there is no data ready to read. 
         }
 ```
 
-## Decoding Packets
+# Decoding Packets
 
 This is the Project Cars Version 2 header file https://www.projectcarsgame.com/wp-content/uploads/2018/05/SMS_UDP_Definitions_v2_Patch5.zip.
 
@@ -87,9 +87,9 @@ Brief example
       }
 ```
 
-## Process Classes
+# Process Classes
 
-# PacketQueue, UDPProcess and ConsoleProcess.
+## PacketQueue, UDPProcess and ConsoleProcess.
 
 You don't have to use these classes this is just the way I have done it.  I'm using the "Filter and Pipe" architecture IProcess are the filters and the pipe is PacketQueue.
 
@@ -111,7 +111,7 @@ Look at Program.cs for an example of using these classes.
             consoleThread.Start();
 ```
 
-## State
+# State
 
 This something you dont have to follow just the way I did it, I use the GOF State Pattern here so that you can record and display the telemetry based on what GameState you are in.
 
