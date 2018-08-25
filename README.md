@@ -43,7 +43,7 @@ Will not wait and return an empty Byte Array if there is no data ready to read. 
 
 # Decoding Packets
 
-This is the Project Cars Version 2 header file https://www.projectcarsgame.com/wp-content/uploads/2018/05/SMS_UDP_Definitions_v2_Patch5.zip.
+You can get the project cars patch 5 version 2 header file from https://www.projectcarsgame.com/project-cars-2-api/
 
 You use the Decoder classes to decode the packet from the UDP read.
 
