@@ -13,7 +13,7 @@ Also have done a set of C++ Classes https://github.com/leroythelegend/rough_idea
 
 # Capturing UDP packets
 
-If you are interested in getting the raw packets and decoding them yourself just one of use these classes
+If you are interested in getting the raw packets and decoding them yourself just use one of these classes
 
 ## UDPBlockingReader 
 
