@@ -29,7 +29,7 @@ namespace pcars
         {
             if ((data & 128) == 128)
             {
-                return -(data & 127);
+                return data - 256;
             }
             else
             {
