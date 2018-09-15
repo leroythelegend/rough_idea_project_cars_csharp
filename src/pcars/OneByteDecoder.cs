@@ -27,7 +27,14 @@ namespace pcars
 
         public int Int()
         {
-            return data;
+            if ((data & 128) == 128)
+            {
+                return -(data & 127);
+            }
+            else
+            {
+                return data;
+            }
         }
 
         public CarFlags CarFlags()
