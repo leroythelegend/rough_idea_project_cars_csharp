@@ -27,10 +27,11 @@ namespace pcars
 
         public int Int()
         {
-            if ((data & 128) == 128) {
+            if ((data & 128) == 128)
+            {
                 return data - 256;
             }
-            else 
+            else
             {
                 return data;
             }
