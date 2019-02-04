@@ -78,7 +78,7 @@ namespace pcars
                         packets.Push(timestats);
                     }
 
-                    if (packetBase.packetType.UInt() == 8 && packetBase.partialPacketIndex.UInt() == 1)
+                    if (packetBase.packetType.UInt() == 8 && bytes.Length == 1164)
                     {
                         var vehicleName = new ParticipantVehicleNamesDataDecoder();
                         index = 0;
@@ -87,7 +87,7 @@ namespace pcars
                         packets.Push(vehicleName);
                     }
 
-                    if (packetBase.packetType.UInt() == 8 && packetBase.partialPacketIndex.UInt() == 2)
+                    if (packetBase.packetType.UInt() == 8 && bytes.Length == 1452)
                     {
                         var className = new VehicleClassNamesDataDecoder();
                         index = 0;
