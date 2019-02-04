@@ -8,6 +8,7 @@ namespace pcars
         void RecordTelemetry(PacketDecoder packet);
         void Clear();
 
-        List<Telemetry> Telemetry();
+        RecordedData RecordedData();
+        TelemetryMap RecordedMap();
     }
 }
