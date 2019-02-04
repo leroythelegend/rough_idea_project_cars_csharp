@@ -23,6 +23,22 @@ namespace pcars
                 { "tyreTreadFR", new List<TelemetryData>() },
                 { "tyreTreadRL", new List<TelemetryData>() },
                 { "tyreTreadRR", new List<TelemetryData>() },
+                { "tyreLayerFL", new List<TelemetryData>() },
+                { "tyreLayerFR", new List<TelemetryData>() },
+                { "tyreLayerRL", new List<TelemetryData>() },
+                { "tyreLayerRR", new List<TelemetryData>() },
+                { "tyreCarcassFL", new List<TelemetryData>() },
+                { "tyreCarcassFR", new List<TelemetryData>() },
+                { "tyreCarcassRL", new List<TelemetryData>() },
+                { "tyreCarcassRR", new List<TelemetryData>() },
+                { "tyreRimFL", new List<TelemetryData>() },
+                { "tyreRimFR", new List<TelemetryData>() },
+                { "tyreRimRL", new List<TelemetryData>() },
+                { "tyreRimRR", new List<TelemetryData>() },
+                { "tyreTempFL", new List<TelemetryData>() },
+                { "tyreTempFR", new List<TelemetryData>() },
+                { "tyreTempRL", new List<TelemetryData>() },
+                { "tyreTempRR", new List<TelemetryData>() },
                 { "FLLeft", new List<TelemetryData>() },
                 { "FLCentre", new List<TelemetryData>() },
                 { "FLRight", new List<TelemetryData>() },
@@ -61,8 +77,33 @@ namespace pcars
                 { "rpmGear4", new List<TelemetryData>() },
                 { "torqueGear4", new List<TelemetryData>() },
                 { "engSpeedGear4", new List<TelemetryData>() },
+                { "rpmGear5", new List<TelemetryData>() },
+                { "torqueGear5", new List<TelemetryData>() },
+                { "engSpeedGear5", new List<TelemetryData>() },
+                { "rpmGear6", new List<TelemetryData>() },
+                { "torqueGear6", new List<TelemetryData>() },
+                { "engSpeedGear6", new List<TelemetryData>() },
                 { "speed", new List<TelemetryData>() },
-                { "steering", new List<TelemetryData>() }
+                { "steering", new List<TelemetryData>() },
+                { "FLSuspensionTravel", new List<TelemetryData>() },
+                { "FRSuspensionTravel", new List<TelemetryData>() },
+                { "RLSuspensionTravel", new List<TelemetryData>() },
+                { "RRSuspensionTravel", new List<TelemetryData>() },
+                { "FLSuspensionVelocity", new List<TelemetryData>() },
+                { "FRSuspensionVelocity", new List<TelemetryData>() },
+                { "RLSuspensionVelocity", new List<TelemetryData>() },
+                { "RRSuspensionVelocity", new List<TelemetryData>() },
+                { "FLWear", new List<TelemetryData>() },
+                { "FRWear", new List<TelemetryData>() },
+                { "RLWear", new List<TelemetryData>() },
+                { "RRWear", new List<TelemetryData>() },
+                { "FLRPS", new List<TelemetryData>() },
+                { "FRRPS", new List<TelemetryData>() },
+                { "RLRPS", new List<TelemetryData>() },
+                { "RRRPS", new List<TelemetryData>() },
+                { "WaterTemp", new List<TelemetryData>() }
+
+
             };
         }
 
@@ -87,6 +128,19 @@ namespace pcars
         public int MaxInt(string key)
         {
             int m = 0;
+            foreach (var i in telemetry[key])
+            {
+                if (m < i.Int())
+                {
+                    m = i.Int();
+                }
+            }
+            return m;
+        }
+
+        public float MaxFloat(string key)
+        {
+            float m = 0;
             foreach (var i in telemetry[key])
             {
                 if (m < i.Int())
@@ -137,6 +191,20 @@ namespace pcars
             return (avg / telemetry[key].Count);
         }
 
+        public uint AvgUInt(string key)
+        {
+            if (telemetry[key].Count == 0)
+            {
+                return 0;
+            }
+            uint avg = 0;
+            foreach (var i in telemetry[key])
+            {
+                avg += i.UInt();
+            }
+            return (avg / (uint)telemetry[key].Count);
+        }
+
         public float AvgFloat(string key)
         {
             if (telemetry[key].Count == 0)
@@ -165,6 +233,22 @@ namespace pcars
             telemetry["tyreTreadFR"].Clear();
             telemetry["tyreTreadRL"].Clear();
             telemetry["tyreTreadRR"].Clear();
+            telemetry["tyreLayerFL"].Clear();
+            telemetry["tyreLayerFR"].Clear();
+            telemetry["tyreLayerRL"].Clear();
+            telemetry["tyreLayerRR"].Clear();
+            telemetry["tyreCarcassFL"].Clear();
+            telemetry["tyreCarcassFR"].Clear();
+            telemetry["tyreCarcassRL"].Clear();
+            telemetry["tyreCarcassRR"].Clear();
+            telemetry["tyreRimFL"].Clear();
+            telemetry["tyreRimFR"].Clear();
+            telemetry["tyreRimRL"].Clear();
+            telemetry["tyreRimRR"].Clear();
+            telemetry["tyreTempFL"].Clear();
+            telemetry["tyreTempFR"].Clear();
+            telemetry["tyreTempRL"].Clear();
+            telemetry["tyreTempRR"].Clear();
             telemetry["FLLeft"].Clear();
             telemetry["FLCentre"].Clear();
             telemetry["FLRight"].Clear();
@@ -203,8 +287,37 @@ namespace pcars
             telemetry["rpmGear4"].Clear();
             telemetry["torqueGear4"].Clear();
             telemetry["engSpeedGear4"].Clear();
+            telemetry["rpmGear5"].Clear();
+            telemetry["torqueGear5"].Clear();
+            telemetry["engSpeedGear5"].Clear();
+            telemetry["rpmGear6"].Clear();
+            telemetry["torqueGear6"].Clear();
+            telemetry["engSpeedGear6"].Clear();
             telemetry["speed"].Clear();
             telemetry["steering"].Clear();
+            telemetry["FLSuspensionTravel"].Clear();
+            telemetry["FRSuspensionTravel"].Clear();
+            telemetry["RLSuspensionTravel"].Clear();
+            telemetry["RRSuspensionTravel"].Clear();
+            telemetry["FLSuspensionVelocity"].Clear();
+            telemetry["FRSuspensionVelocity"].Clear();
+            telemetry["RLSuspensionVelocity"].Clear();
+            telemetry["RRSuspensionVelocity"].Clear();
+            telemetry["FLWear"].Clear();
+            telemetry["FRWear"].Clear();
+            telemetry["RLWear"].Clear();
+            telemetry["RRWear"].Clear();
+            telemetry["FLRPS"].Clear();
+            telemetry["FRRPS"].Clear();
+            telemetry["RLRPS"].Clear();
+            telemetry["RRRPS"].Clear();
+
+            telemetry["WaterTemp"].Clear();
+
+
+
+
+
         }
     }
 }
